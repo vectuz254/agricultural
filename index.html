@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Smart Agriculture</title>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+ 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+ 
+<body data-module="dashboard">
+ 
+<button id="menuToggle" class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+ 
+<div class="container">
+ 
+    <!-- Sidebar -->
+    <aside class="sidebar">
+ 
+        <h2>🌱 Smart Agriculture</h2>
+ 
+        <ul>
+            <li class="active" onclick="location.href='dashboard.html'"><i class="fas fa-chart-line"></i> Dashboard</li>
+            <li onclick="location.href='farms.html'"><i class="fas fa-tractor"></i> Farms</li>
+            <li onclick="location.href='weather.html'"><i class="fas fa-cloud-sun"></i> Weather</li>
+            <li onclick="location.href='crops.html'"><i class="fas fa-seedling"></i> Crops</li>
+            <li onclick="location.href='pest.html'"><i class="fas fa-bug"></i> Pest Monitoring</li>
+            <li onclick="location.href='irrigation.html'"><i class="fas fa-tint"></i> Irrigation</li>
+            <li onclick="location.href='reports.html'"><i class="fas fa-file-alt"></i> Reports</li>
+            <li onclick="location.href='settings.html'"><i class="fas fa-cog"></i> Settings</li>
+        </ul>
+ 
+        <div class="sidebar-footer">Smart Agriculture v1.0<br>Field data, simplified.</div>
+ 
+    </aside>
+ 
+    <!-- Main Content -->
+    <main class="main-content">
+ 
+        <div class="topbar">
+            <div>
+                <h1>Smart Agriculture Dashboard</h1>
+                <p>Monitor farms, crops, weather, and productivity at a glance.</p>
+            </div>
+            <button id="darkModeBtn">🌙 Dark Mode</button>
+        </div>
+ 
+        <!-- KPI Cards -->
+        <div class="cards">
+ 
+            <div class="card">
+                <h3>Total Farms</h3>
+                <h2 id="farmsCount">0</h2>
+            </div>
+ 
+            <div class="card">
+                <h3>Active Crops</h3>
+                <h2 id="cropsCount">0</h2>
+            </div>
+ 
+            <div class="card">
+                <h3>Water Usage (L)</h3>
+                <h2 id="waterUsage">0</h2>
+            </div>
+ 
+            <div class="card">
+                <h3>Expected Yield (T)</h3>
+                <h2 id="yieldCount">0</h2>
+            </div>
+ 
+        </div>
+ 
+        <!-- Yield Analytics -->
+        <div class="panel">
+            <h2>📈 Yield Analytics <span class="tag">by crop</span></h2>
+            <canvas id="yieldChart"></canvas>
+        </div>
+ 
+        <!-- AI Recommendations -->
+        <div class="panel">
+            <h2>🤖 AI Recommendations</h2>
+            <div id="aiRecommendations"></div>
+        </div>
+ 
+        <!-- Notifications -->
+        <div class="panel">
+            <h2>🔔 Notifications</h2>
+            <ul id="notifications"></ul>
+        </div>
+ 
+    </main>
+ 
+</div>
+ 
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+ 
+</body>
+</html>
