@@ -1,58 +1,109 @@
 // ============================================
-// AGROSENSE — dash-auth.js (Supabase version)
-// Protects dashboard.html / profile.html: redirects to
-// login.html if no one is signed in, and loads the
-// customer profile from the profiles table.
+// AGROSENSE — auth.js (Supabase Auth + Postgres)
+// Used on login.html and register.html
 // ============================================
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from './supabase-config.js';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-window.logout = async function () {
-  await supabase.auth.signOut();
-  window.location.href = 'login.html';
-};
+function showMsg(text, type) {
+  const el = document.getElementById('authMsg');
+  if (!el) return;
+  el.textContent = text;
+  el.className = 'auth-msg ' + type;
+  el.style.display = 'block';
+}
 
-async function init() {
-  const { data: { session } } = await supabase.auth.getSession();
+function setLoading(isLoading) {
+  const btn = document.querySelector('.btn-submit');
+  if (!btn) return;
+  btn.disabled = isLoading;
+  btn.style.opacity = isLoading ? 0.6 : 1;
+}
 
-  if (!session) {
-    window.location.href = 'login.html';
+// ── Registration ──────────────────────────────
+window.handleRegister = async function () {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!name || !email || !password) {
+    showMsg('Please fill in all fields.', 'error');
+    return;
+  }
+  if (password.length < 6) {
+    showMsg('Password must be at least 6 characters.', 'error');
     return;
   }
 
-  // Auth confirmed — safe to reveal the page now
-  document.body.style.visibility = 'visible';
+  setLoading(true);
 
-  const user = session.user;
-  let name = user.user_metadata?.name || 'Farmer';
-  let profile = null;
-
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { name } }
+  });
 
   if (error) {
-    console.error('Could not load profile:', error.message);
-  } else if (data) {
-    profile = data;
-    name = data.name || name;
+    setLoading(false);
+    showMsg(friendlyError(error.message), 'error');
+    return;
   }
 
-  const nameEl = document.getElementById('userName');
-  const avatarEl = document.getElementById('userAvatar');
-  if (nameEl) nameEl.textContent = name;
-  if (avatarEl) avatarEl.textContent = name.charAt(0).toUpperCase();
+  // Create the matching profile row (id must match the auth user's id)
+  if (data.user) {
+    const { error: profileError } = await supabase.from('profiles').insert({
+      id: data.user.id,
+      name,
+      email,
+      farm_name: '',
+      location: '',
+      phone: ''
+    });
+    if (profileError) console.error('Profile creation failed:', profileError.message);
+  }
 
-  // Make the profile + id available to other scripts on the page
-  window.currentUserId = user.id;
-  window.currentUserProfile = profile;
-  window.dispatchEvent(new CustomEvent('authReady', {
-    detail: { uid: user.id, profile, email: user.email }
-  }));
+  // If "Confirm email" is ON in Supabase, there's no session yet — send to login instead
+  if (!data.session) {
+    showMsg('Account created! Please check your email to confirm, then sign in.', 'success');
+    setLoading(false);
+    return;
+  }
+
+  showMsg('Account created! Redirecting…', 'success');
+  setTimeout(() => (window.location.href = 'dashboard.html'), 900);
+};
+
+// ── Login ──────────────────────────────────────
+window.handleLogin = async function () {
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+
+  if (!email || !password) {
+    showMsg('Please enter your email and password.', 'error');
+    return;
+  }
+
+  setLoading(true);
+
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+  if (error) {
+    setLoading(false);
+    showMsg(friendlyError(error.message), 'error');
+    return;
+  }
+
+  window.location.href = 'dashboard.html';
+};
+
+function friendlyError(message) {
+  const map = {
+    'User already registered': 'That email is already registered.',
+    'Invalid login credentials': 'Incorrect email or password.',
+    'Email not confirmed': 'Please confirm your email before signing in.',
+    'Password should be at least 6 characters.': 'Password must be at least 6 characters.'
+  };
+  return map[message] || message || 'Something went wrong. Please try again.';
 }
-
-init();
