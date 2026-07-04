@@ -1,110 +1,58 @@
 // ============================================
-// AGROSENSE — auth.js (Firebase Auth + Firestore)
-// Used on login.html and register.html
+// AGROSENSE — dash-auth.js (Supabase version)
+// Protects dashboard.html / profile.html: redirects to
+// login.html if no one is signed in, and loads the
+// customer profile from the profiles table.
 // ============================================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { firebaseConfig } from "./firebase-config.js";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './supabase-config.js';
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-function showMsg(text, type) {
-  const el = document.getElementById('authMsg');
-  if (!el) return;
-  el.textContent = text;
-  el.className = 'auth-msg ' + type;
-  el.style.display = 'block';
-}
-
-function setLoading(isLoading) {
-  const btn = document.querySelector('.btn-submit');
-  if (!btn) return;
-  btn.disabled = isLoading;
-  btn.style.opacity = isLoading ? 0.6 : 1;
-}
-
-// ── Registration ──────────────────────────────
-window.handleRegister = async function () {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-
-  if (!name || !email || !password) {
-    showMsg('Please fill in all fields.', 'error');
-    return;
-  }
-  if (password.length < 6) {
-    showMsg('Password must be at least 6 characters.', 'error');
-    return;
-  }
-
-  setLoading(true);
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(cred.user, { displayName: name });
-
-    // Create the customer profile document
-    await setDoc(doc(db, 'users', cred.user.uid), {
-      name,
-      email,
-      farmName: '',
-      location: '',
-      phone: '',
-      role: 'client',
-      createdAt: serverTimestamp()
-    });
-
-    showMsg('Account created! Redirecting…', 'success');
-    setTimeout(() => (window.location.href = 'dashboard.html'), 900);
-  } catch (err) {
-    setLoading(false);
-    showMsg(friendlyError(err.code), 'error');
-  }
+window.logout = async function () {
+  await supabase.auth.signOut();
+  window.location.href = 'login.html';
 };
 
-// ── Login ──────────────────────────────────────
-window.handleLogin = async function () {
-  const email = document.getElementById('loginEmail').value.trim();
-  const password = document.getElementById('loginPassword').value;
+async function init() {
+  const { data: { session } } = await supabase.auth.getSession();
 
-  if (!email || !password) {
-    showMsg('Please enter your email and password.', 'error');
+  if (!session) {
+    window.location.href = 'login.html';
     return;
   }
 
-  setLoading(true);
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = 'dashboard.html';
-  } catch (err) {
-    setLoading(false);
-    showMsg(friendlyError(err.code), 'error');
-  }
-};
+  // Auth confirmed — safe to reveal the page now
+  document.body.style.visibility = 'visible';
 
-function friendlyError(code) {
-  const map = {
-    'auth/email-already-in-use': 'That email is already registered.',
-    'auth/invalid-email': 'Please enter a valid email address.',
-    'auth/weak-password': 'Password is too weak (minimum 6 characters).',
-    'auth/user-not-found': 'No account found with that email.',
-    'auth/wrong-password': 'Incorrect password.',
-    'auth/invalid-credential': 'Incorrect email or password.',
-    'auth/too-many-requests': 'Too many attempts. Please wait a moment and try again.'
-  };
-  return map[code] || 'Something went wrong. Please try again.';
+  const user = session.user;
+  let name = user.user_metadata?.name || 'Farmer';
+  let profile = null;
+
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
+
+  if (error) {
+    console.error('Could not load profile:', error.message);
+  } else if (data) {
+    profile = data;
+    name = data.name || name;
+  }
+
+  const nameEl = document.getElementById('userName');
+  const avatarEl = document.getElementById('userAvatar');
+  if (nameEl) nameEl.textContent = name;
+  if (avatarEl) avatarEl.textContent = name.charAt(0).toUpperCase();
+
+  // Make the profile + id available to other scripts on the page
+  window.currentUserId = user.id;
+  window.currentUserProfile = profile;
+  window.dispatchEvent(new CustomEvent('authReady', {
+    detail: { uid: user.id, profile, email: user.email }
+  }));
 }
 
+init();
