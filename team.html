@@ -10,6 +10,10 @@ href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&fam
 <style>body { visibility: hidden; }</style>
 </head>
 <body class="page-dashboard">
+<button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open menu">
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 <div class="dash-layout">
 <aside class="sidebar">
 <div class="sb-logo">
@@ -153,5 +157,6 @@ Add Member
 
 <script type="module" src="dash-auth.js"></script>
 <script type="module" src="team.js"></script>
+<script src="mobile-nav.js"></script>
 </body>
 </html>
