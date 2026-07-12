@@ -609,6 +609,23 @@ RESPONSIVE
   .sensor-grid { grid-template-columns: repeat(2, 1fr); }
   .dash-bottom { grid-template-columns: 1fr; }
 }
+/* MOBILE NAV TOGGLE (hamburger) — hidden on desktop */
+.mobile-nav-toggle {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer; position: fixed; top: 18px; left: 18px; z-index: 250;
+  box-shadow: var(--shadow);
+}
+.sidebar-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 240;
+  background: rgba(43,58,31,0.45);
+}
+.sidebar-backdrop.open { display: block; }
+
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
   .hero-visual { display: none; }
@@ -616,8 +633,17 @@ RESPONSIVE
   .auth-deco { display: none; }
   .auth-panel { padding: 36px 28px; }
   .dash-layout { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
-  .dash-main { padding: 24px 20px; }
+  .mobile-nav-toggle { display: flex; }
+  .sidebar {
+    display: flex;
+    position: fixed; top: 0; left: 0; height: 100vh; width: 250px;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    z-index: 245;
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .dash-main { padding: 72px 20px 24px; }
   .site-header { padding: 16px 20px; }
   .features { padding: 64px 24px; }
 }
