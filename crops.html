@@ -8,6 +8,7 @@
 href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>body { visibility: hidden; }</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="page-dashboard">
 <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open menu">
@@ -98,6 +99,14 @@ Sign Out
 </div>
 </div>
 
+<div class="field-photo-banner">
+<img src="https://images.pexels.com/photos/101977/pexels-photo-101977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Maize plantation field">
+<div class="field-photo-caption">
+<span>Field A</span>
+<strong>Maize Plantation — Flowering Stage</strong>
+</div>
+</div>
+
 <div class="sensor-grid">
 <div class="sensor-card">
 <div class="sc-header"><span class="sc-label">Maize · Field A</span><span class="sc-icon">🌽</span></div>
@@ -124,7 +133,22 @@ Sign Out
 </div>
 </div>
 
-<div class="activity-card">
+<div class="dash-bottom" style="margin-bottom:20px">
+<div class="chart-card">
+<div class="chart-header">
+<h2>Land Allocation by Crop</h2>
+</div>
+<canvas id="cropPieChart" height="220"></canvas>
+</div>
+<div class="chart-card">
+<div class="chart-header">
+<h2>Health Score by Field</h2>
+</div>
+<canvas id="cropBarChart" height="220"></canvas>
+</div>
+</div>
+
+<div class="activity-card" style="margin-bottom:20px">
 <h2>Growth Timeline</h2>
 <ul class="activity-list">
 <li class="al-item al-good"><div class="al-dot good"></div><div><strong>Maize — Field A</strong><span>Planted Mar 12 · Flowering stage · Harvest est. Aug 20</span></div></li>
@@ -132,9 +156,25 @@ Sign Out
 <li class="al-item al-good"><div class="al-dot good"></div><div><strong>Tomatoes — Field C</strong><span>Planted Feb 28 · Fruiting stage · Harvest est. Jul 20</span></div></li>
 </ul>
 </div>
+
+<div class="chart-card livestock-card">
+<div class="chart-header">
+<h2>Livestock Overview</h2>
+</div>
+<div class="livestock-body">
+<img src="https://images.pexels.com/photos/254178/pexels-photo-254178.jpeg?w=1260&h=750&dpr=1" alt="Cows grazing on pasture" class="livestock-photo">
+<div class="livestock-stats">
+<div class="livestock-stat"><strong>24</strong><span>Cattle on pasture</span></div>
+<div class="livestock-stat"><strong>92%</strong><span>Herd health score</span></div>
+<div class="livestock-stat"><strong>Zone B</strong><span>Current grazing area</span></div>
+</div>
+</div>
+</div>
+
 </main>
 </div>
 <script type="module" src="dash-auth.js"></script>
 <script src="mobile-nav.js"></script>
+<script src="crops.js"></script>
 </body>
 </html>
