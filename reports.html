@@ -8,6 +8,7 @@
 href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>body { visibility: hidden; }</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="page-dashboard">
 <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open menu">
@@ -121,6 +122,21 @@ Sign Out
 </div>
 </div>
 
+<div class="dash-bottom" style="margin-bottom:20px">
+<div class="chart-card">
+<div class="chart-header">
+<h2>Water Usage by Field (This Week)</h2>
+</div>
+<canvas id="waterPieChart" height="220"></canvas>
+</div>
+<div class="chart-card">
+<div class="chart-header">
+<h2>Monthly Yield by Crop (kg)</h2>
+</div>
+<canvas id="yieldBarChart" height="220"></canvas>
+</div>
+</div>
+
 <div class="activity-card">
 <h2>Generated Reports</h2>
 <ul class="activity-list">
@@ -134,5 +150,6 @@ Sign Out
 </div>
 <script type="module" src="dash-auth.js"></script>
 <script src="mobile-nav.js"></script>
+<script src="reports.js"></script>
 </body>
 </html>
