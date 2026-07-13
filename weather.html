@@ -8,6 +8,7 @@
 href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>body { visibility: hidden; }</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="page-dashboard">
 <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open menu">
@@ -121,6 +122,13 @@ Sign Out
 </div>
 </div>
 
+<div class="chart-card" style="margin-bottom:20px">
+<div class="chart-header">
+<h2>5-Day Temperature Outlook (°C)</h2>
+</div>
+<canvas id="weatherBarChart" height="220"></canvas>
+</div>
+
 <div class="activity-card">
 <h2>5-Day Forecast</h2>
 <ul class="activity-list">
@@ -135,5 +143,6 @@ Sign Out
 </div>
 <script type="module" src="dash-auth.js"></script>
 <script src="mobile-nav.js"></script>
+<script src="weather.js"></script>
 </body>
 </html>
