@@ -4,259 +4,189 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgroSense — Smart Farm Monitoring</title>
+<style>body { visibility: hidden; }</style>
 <link
-href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="home-enhancements.css">
 </head>
 <body class="page-home">
+
 <!-- NAV -->
 <header class="site-header">
-  <div class="logo">
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <path d="M14 2C14 2 6 8 6 16a8 8 0 0016 0C22 8 14 2 14 2z" fill="#7AAF8A"/>
-      <path d="M14 8C14 8 10 12 10 16a4 4 0 008 0C18 12 14 8 14 8z" fill="#1B3A2D"/>
-    </svg>
-    <span>AgroSense</span>
-  </div>
-  <nav class="site-nav">
-    <a href="login.html">Sign In</a>
-    <a href="register.html" class="btn-nav">ADD FARMER</a>
-  </nav>
+<div class="logo">
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+<path d="M14 2C14 2 6 8 6 16a8 8 0 0016 0C22 8 14 2 14 2z" fill="#7AAF8A"/>
+<path d="M14 8C14 8 10 12 10 16a4 4 0 008 0C18 12 14 8 14 8z" fill="#1B3A2D"/>
+</svg>
+<span>AgroSense</span>
+</div>
+<nav class="site-nav">
+<a href="login.html">Sign In</a>
+<a href="register.html" class="btn-nav">ADD FARMER</a>
+</nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg">
-    <svg class="hero-leaves" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <radialGradient id="g1" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#2d5a3d" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#1B3A2D" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <circle cx="200" cy="150" r="180" fill="url(#g1)"/>
-      <circle cx="600" cy="400" r="220" fill="url(#g1)"/>
-      <ellipse cx="120" cy="300" rx="60" ry="25" fill="#7AAF8A" opacity="0.15" transform="rotate(-30 120 300)"/>
-      <ellipse cx="680" cy="150" rx="70" ry="28" fill="#7AAF8A" opacity="0.12" transform="rotate(20 680 150)"/>
-      <ellipse cx="400" cy="500" rx="80" ry="30" fill="#7AAF8A" opacity="0.1" transform="rotate(-10 400 500)"/>
-      <ellipse cx="750" cy="350" rx="55" ry="22" fill="#C8873A" opacity="0.08" transform="rotate(40 750 350)"/>
-      <ellipse cx="50" cy="450" rx="65" ry="24" fill="#7AAF8A" opacity="0.12" transform="rotate(-50 50 450)"/>
-    </svg>
-  </div>
-  <div class="hero-content">
-    <span class="hero-eyebrow">Precision Agriculture</span>
-    <h1 class="hero-title">Your farm,<br>intelligently watched.</h1>
-    <p class="hero-sub">Real-time soil, climate, and crop data — unified in one dashboard. Make smarter decisions, every single day.</p>
-    <div class="hero-actions">
-      <a href="register.html" class="btn-primary">Start Monitoring Free</a>
-      <a href="dashboard.html" class="btn-ghost">View Demo Dashboard →</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><strong>98%</strong><span>Accuracy</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><strong>4 Sensors</strong><span>Live tracking</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><strong>24/7</strong><span>Monitoring</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><strong>3 Fields</strong><span>Under watch</span></div>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="floating-card fc1">
-      <div class="fc-icon">💧</div>
-      <div class="fc-data">
-        <span class="fc-val">68%</span>
-        <span class="fc-label">Soil Moisture</span>
-      </div>
-      <div class="pulse-ring"></div>
-    </div>
-    <div class="floating-card fc2">
-      <div class="fc-icon">🌡</div>
-      <div class="fc-data">
-        <span class="fc-val">29°C</span>
-        <span class="fc-label">Temperature</span>
-      </div>
-    </div>
-    <div class="floating-card fc3">
-      <div class="fc-icon">🌿</div>
-      <div class="fc-data">
-        <span class="fc-val">Healthy</span>
-        <span class="fc-label">Crop Status</span>
-      </div>
-    </div>
-    <div class="floating-card fc4">
-      <div class="fc-icon">📈</div>
-      <div class="fc-data">
-        <span class="fc-val">+12%</span>
-        <span class="fc-label">Yield Forecast</span>
-      </div>
-    </div>
-  </div>
+<div class="hero-photo-bg">
+<img src="https://images.pexels.com/photos/10041316/pexels-photo-10041316.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1000&dpr=1" alt="Farmer walking through a crop field">
+<div class="hero-photo-overlay"></div>
+</div>
+<div class="hero-content">
+<span class="hero-eyebrow">Precision Agriculture</span>
+<h1 class="hero-title">Your farm,<br>intelligently watched.</h1>
+<p class="hero-sub">Real-time soil, climate, and crop data — unified in one dashboard. Make smarter decisions, every single day.</p>
+<div class="hero-actions">
+<a href="register.html" class="btn-primary">Start Monitoring Free</a>
+<a href="dashboard.html" class="btn-ghost">View Demo Dashboard →</a>
+</div>
+<div class="hero-stats">
+<div class="stat"><strong>98%</strong><span>Accuracy</span></div>
+<div class="stat-divider"></div>
+<div class="stat"><strong>4 Sensors</strong><span>Live tracking</span></div>
+<div class="stat-divider"></div>
+<div class="stat"><strong>24/7</strong><span>Monitoring</span></div>
+<div class="stat-divider"></div>
+<div class="stat"><strong>3 Fields</strong><span>Under watch</span></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="floating-card fc1">
+<div class="fc-icon">💧</div>
+<div class="fc-data">
+<span class="fc-val">68%</span>
+<span class="fc-label">Soil Moisture</span>
+</div>
+<div class="pulse-ring"></div>
+</div>
+<div class="floating-card fc2">
+<div class="fc-icon">🌡</div>
+<div class="fc-data">
+<span class="fc-val">29°C</span>
+<span class="fc-label">Temperature</span>
+</div>
+</div>
+<div class="floating-card fc3">
+<div class="fc-icon">🌿</div>
+<div class="fc-data">
+<span class="fc-val">Healthy</span>
+<span class="fc-label">Crop Status</span>
+</div>
+</div>
+<div class="floating-card fc4">
+<div class="fc-icon">📈</div>
+<div class="fc-data">
+<span class="fc-val">+12%</span>
+<span class="fc-label">Yield Forecast</span>
+</div>
+</div>
+</div>
 </section>
 
-<!-- LIVE SNAPSHOT STRIP -->
-<section class="snapshot-strip">
-  <div class="snapshot-item">
-    <span class="snapshot-icon">🌽</span>
-    <div>
-      <strong>Maize · Field A</strong>
-      <span>Flowering stage · 90/100 health</span>
-    </div>
-  </div>
-  <div class="snapshot-item">
-    <span class="snapshot-icon">🍅</span>
-    <div>
-      <strong>Tomatoes · Field C</strong>
-      <span>Ready in 2 weeks · 85/100 health</span>
-    </div>
-  </div>
-  <div class="snapshot-item">
-    <span class="snapshot-icon">🌱</span>
-    <div>
-      <strong>Beans · Field B</strong>
-      <span>Needs nitrogen · 68/100 health</span>
-    </div>
-  </div>
-  <div class="snapshot-item">
-    <span class="snapshot-icon">🐄</span>
-    <div>
-      <strong>Livestock · Zone B</strong>
-      <span>24 cattle · 92% herd health</span>
-    </div>
-  </div>
-</section>
-
-<!-- CROP & FARM GALLERY -->
-<section class="crop-gallery">
-  <span class="section-eyebrow">On the ground</span>
-  <h2 class="section-title">What AgroSense is watching right now</h2>
-  <p class="section-sub">Every card on this page is backed by a real field, herd, or forecast — not a mockup.</p>
-  <div class="gallery-grid">
-    <div class="gallery-card gallery-large">
-      <img src="https://images.pexels.com/photos/101977/pexels-photo-101977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Maize plantation field">
-      <div class="gallery-caption">
-        <span>Field A · Maize</span>
-        <strong>Flowering stage, tracking toward an Aug 20 harvest</strong>
-        <p>Soil moisture and nitrogen sensors update every 15 minutes across this field.</p>
-      </div>
-    </div>
-    <div class="gallery-card">
-      <img src="https://images.pexels.com/photos/6314416/pexels-photo-6314416.jpeg?auto=compress&cs=tinysrgb&w=800&h=750&dpr=1" alt="Tomato plants ripening on the vine">
-      <div class="gallery-caption">
-        <span>Field C · Tomatoes</span>
-        <strong>Fruiting stage</strong>
-        <p>Harvest estimated in 2 weeks.</p>
-      </div>
-    </div>
-    <div class="gallery-card">
-      <img src="https://images.pexels.com/photos/89267/pexels-photo-89267.jpeg?auto=compress&cs=tinysrgb&w=800&h=750&dpr=1" alt="Green bean field rows">
-      <div class="gallery-caption">
-        <span>Field B · Beans</span>
-        <strong>Vegetative stage</strong>
-        <p>Nitrogen deficiency flagged this week.</p>
-      </div>
-    </div>
-    <div class="gallery-card">
-      <img src="https://images.pexels.com/photos/254178/pexels-photo-254178.jpeg?w=800&h=750&dpr=1" alt="Cattle grazing on pasture">
-      <div class="gallery-caption">
-        <span>Zone B · Livestock</span>
-        <strong>24 cattle on pasture</strong>
-        <p>92% herd health score this month.</p>
-      </div>
-    </div>
-    <div class="gallery-card">
-      <img src="https://images.pexels.com/photos/185473/pexels-photo-185473.jpeg?auto=compress&cs=tinysrgb&w=800&h=750&dpr=1" alt="Freshly harvested green beans">
-      <div class="gallery-caption">
-        <span>Harvest</span>
-        <strong>600kg beans harvested this season</strong>
-        <p>+12% ahead of last season's yield.</p>
-      </div>
-    </div>
-  </div>
+<!-- HIGHLIGHT BAND -->
+<section class="highlight-band">
+<div class="highlight-item"><strong>2,400+</strong><span>Fields monitored</span></div>
+<div class="highlight-item"><strong>30%</strong><span>Avg. water saved</span></div>
+<div class="highlight-item"><strong>98.5%</strong><span>Platform uptime</span></div>
+<div class="highlight-item"><strong>24</strong><span>Livestock tracked</span></div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-  <span class="section-eyebrow">The platform</span>
-  <h2 class="section-title">Everything your farm needs</h2>
-  <p class="section-sub">Tap any card to see how it works and the live data behind it.</p>
-  <div class="feature-grid">
+<h2 class="section-title">Everything your farm needs</h2>
+<p class="section-sub">Tap any card to see exactly what it does.</p>
+<div class="feature-grid">
 
-    <div class="feature-card" onclick="openFeatureModal('soil')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('soil')">
-      <div class="feature-icon">🌱</div>
-      <h3>Soil Intelligence</h3>
-      <p>Monitor moisture, pH and nutrient levels with precision sensors that alert you before problems arise.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('weather')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('weather')">
-      <div class="feature-icon">🌤</div>
-      <h3>Weather Integration</h3>
-      <p>Hyper-local forecasts merged with your field data — plan irrigation and harvests days ahead.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('irrigation')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('irrigation')">
-      <div class="feature-icon">💦</div>
-      <h3>Smart Irrigation</h3>
-      <p>Automated scheduling based on real soil readings, not guesswork. Save up to 40% on water usage.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('analytics')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('analytics')">
-      <div class="feature-icon">📊</div>
-      <h3>Crop Analytics</h3>
-      <p>Track growth cycles, yield predictions and health scores across all your fields in one view.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('livestock')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('livestock')">
-      <div class="feature-icon">🐄</div>
-      <h3>Livestock Overview</h3>
-      <p>Track herd health, grazing zones and headcount alongside your crops in the same dashboard.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('pest')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('pest')">
-      <div class="feature-icon">🐛</div>
-      <h3>Pest &amp; Disease Watch</h3>
-      <p>Early-warning alerts flag stress, nutrient deficiency and pest risk before they spread.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('yield')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('yield')">
-      <div class="feature-icon">📈</div>
-      <h3>Yield Forecasting</h3>
-      <p>Compare projected yield against past seasons so you know what's coming before harvest.</p>
-    </div>
-
-    <div class="feature-card" onclick="openFeatureModal('team')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFeatureModal('team')">
-      <div class="feature-icon">👥</div>
-      <h3>Team Collaboration</h3>
-      <p>Invite managers and workers with role-based access, so everyone sees what they need to.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- FEATURE MODAL -->
-<div class="modal-overlay feature-overlay" id="featureModalOverlay">
-  <div class="feature-modal-box" id="featureModalBox">
-    <button class="modal-close" onclick="closeFeatureModal()" aria-label="Close">&times;</button>
-    <div class="feature-modal-icon" id="modalIcon"></div>
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
-    <div class="modal-stats" id="modalStats"></div>
-    <a href="dashboard.html" class="modal-cta">Open Dashboard →</a>
-  </div>
+<div class="feature-card" data-feature="soil">
+<div class="feature-icon">🌱</div>
+<h3>Soil Intelligence</h3>
+<p>Monitor moisture, pH and nutrient levels with precision sensors that alert you before problems arise.</p>
+<span class="feature-more">Learn more →</span>
 </div>
 
+<div class="feature-card" data-feature="weather">
+<div class="feature-icon">🌤</div>
+<h3>Weather Integration</h3>
+<p>Hyper-local forecasts merged with your field data — plan irrigation and harvests days ahead.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+<div class="feature-card has-photo" data-feature="irrigation">
+<div class="feature-photo"><img src="https://images.pexels.com/photos/33881124/pexels-photo-33881124.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Sprinkler irrigating a farm field"></div>
+<div class="feature-icon">💦</div>
+<h3>Smart Irrigation</h3>
+<p>Automated scheduling based on real soil readings, not guesswork. Save up to 40% on water usage.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+<div class="feature-card has-photo" data-feature="crops">
+<div class="feature-photo"><img src="https://images.pexels.com/photos/14170532/pexels-photo-14170532.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Farmers harvesting a bumper corn crop"></div>
+<div class="feature-icon">📊</div>
+<h3>Crop Analytics</h3>
+<p>Track growth cycles, yield predictions and health scores across all your fields in one view.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+<div class="feature-card has-photo" data-feature="livestock">
+<div class="feature-photo"><img src="https://images.pexels.com/photos/254178/pexels-photo-254178.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Cows grazing on pasture"></div>
+<div class="feature-icon">🐄</div>
+<h3>Livestock Monitoring</h3>
+<p>Track herd size, grazing zones and health scores alongside your crops in the same dashboard.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+<div class="feature-card has-photo" data-feature="fields">
+<div class="feature-photo"><img src="https://images.pexels.com/photos/101977/pexels-photo-101977.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Maize plantation field"></div>
+<div class="feature-icon">🗺️</div>
+<h3>Multi-Field Management</h3>
+<p>Manage every field from one place — compare performance, allocate land, and spot issues fast.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+<div class="feature-card" data-feature="team">
+<div class="feature-icon">👥</div>
+<h3>Team Collaboration</h3>
+<p>Invite managers and workers with different access levels — Owner, Manager, or Viewer.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+<div class="feature-card" data-feature="reports">
+<div class="feature-icon">📄</div>
+<h3>Automated Reports</h3>
+<p>Weekly and monthly summaries of yield, water use, and crop health — generated automatically.</p>
+<span class="feature-more">Learn more →</span>
+</div>
+
+</div>
+</section>
+
 <footer class="site-footer">
-  <div class="logo">
-    <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-      <path d="M14 2C14 2 6 8 6 16a8 8 0 0016 0C22 8 14 2 14 2z" fill="#7AAF8A"/>
-      <path d="M14 8C14 8 10 12 10 16a4 4 0 008 0C18 12 14 8 14 8z" fill="#1B3A2D"/>
-    </svg>
-    <span>AgroSense</span>
-  </div>
-  <p>© 2025 AgroSense. All rights reserved.</p>
+<div class="logo"><svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+<path d="M14 2C14 2 6 8 6 16a8 8 0 0016 0C22 8 14 2 14 2z" fill="#7AAF8A"/>
+<path d="M14 8C14 8 10 12 10 16a4 4 0 008 0C18 12 14 8 14 8z" fill="#1B3A2D"/>
+</svg>
+<span>AgroSense</span>
+</div>
+<p>© 2025 AgroSense. All rights reserved.</p>
 </footer>
 
-<script src="home-modals.js"></script>
+<!-- Feature detail modal (reused pattern from Team page) -->
+<div class="modal-overlay" id="featureModalOverlay" onclick="closeFeatureModalOutside(event)">
+<div class="modal-box feature-modal-box">
+<button class="modal-close-x" onclick="closeFeatureModal()" aria-label="Close">&times;</button>
+<div id="featureModalPhoto" class="feature-modal-photo" style="display:none"><img id="featureModalImg" src="" alt=""></div>
+<div class="feature-modal-icon" id="featureModalIcon"></div>
+<h3 id="featureModalTitle"></h3>
+<p class="modal-sub" id="featureModalBody"></p>
+<ul class="feature-modal-list" id="featureModalList"></ul>
+<div class="modal-actions">
+<button class="btn-ghost-modal" onclick="closeFeatureModal()">Close</button>
+<a href="register.html" class="btn-submit" style="width:auto;margin-bottom:0;padding:12px 22px;text-decoration:none;"><span>Get Started</span></a>
+</div>
+</div>
+</div>
+
+<script src="home.js"></script>
+<script>document.body.style.visibility = 'visible';</script>
 </body>
 </html>
